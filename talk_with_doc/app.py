@@ -7,6 +7,7 @@ from langchain.vectorstores import faiss
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
+from langchain.llms import huggingface_hub
 from html_templates import css, bot_template, user_template
 
 @st.cache_data
@@ -45,8 +46,20 @@ def get_vectorstore(text_chunks, service = "instructor_embedding"):
     return vectorstore
 
 @st.cache_data
-def get_conversation_chain(vector_store):
-    llm = ChatOpenAI
+def get_conversation_chain(vector_store, model = "other"):
+    if model == "openai":
+        # use openai model
+        llm = ChatOpenAI()
+    else:
+        # use huggingface model
+        llm = huggingface_hub.HuggingFaceHub(
+            repo_id = "google/flan-t5-base",
+            model_kwargs = {
+                "temperature" : 0.7,
+                "max_length" : 512
+            }
+        )
+
     memory = ConversationBufferMemory(
         memory_key = "chat_history",
         return_messages = True
@@ -60,8 +73,28 @@ def get_conversation_chain(vector_store):
     return conversation_chain
 
 
-if "conversation" not in st.session_state:
-    st.session_state.conversation = None
+def  handle_user_input(user_question):
+    response = st.session_state.conversation(
+        {
+            "question":user_question
+        }
+    )
+
+    st.session_state.chat_history = response["chat_history"]
+    for i, message in enumerate(st.session_state.chat_history):
+        if i % 2 == 0:
+            st.write(
+                user_template.replace("{{MSG}}", message.content),
+                unsafe_allow_html = True
+            )
+        else:
+            st.write(
+                bot_template.replace("{{MSG}}", message.content),
+                unsafe_allow_html = True
+            )
+
+
+
 
 def main():
     load_dotenv() # Auto loading the Keys from .env file
@@ -78,10 +111,18 @@ def main():
         unsafe_allow_html = True
     )
 
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+    
+    if "chat_history" in st.session_state:
+        st.session_state.chat_history = None
+
     st.title(
         body = "📚 Talk With Doc"
     )
-    st.text_input("Let's start asking questions...")
+    user_question = st.text_input("Let's start asking questions...")
+    if user_question:
+        handle_user_input(user_question)
 
     st.write(
         user_template.replace("{{MSG}}", "Hello AI"),
@@ -110,7 +151,7 @@ def main():
                 # create Vector Store with the Embeddings of text_chunks
                 vector_store = get_vectorstore(
                     text_chunks = text_chunks,
-                    service = "instructor_embedding"
+                    service = "openai_embedding"
                 )
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(vector_store)
