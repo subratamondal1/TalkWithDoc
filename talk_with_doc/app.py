@@ -4,6 +4,10 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OctoAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain.vectorstores import faiss
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain
+from langchain.chat_models import ChatOpenAI
+from html_templates import css, bot_template, user_template
 
 @st.cache_data
 def extract_raw_text(docs:list):
@@ -40,6 +44,24 @@ def get_vectorstore(text_chunks, service = "instructor_embedding"):
     )
     return vectorstore
 
+@st.cache_data
+def get_conversation_chain(vector_store):
+    llm = ChatOpenAI
+    memory = ConversationBufferMemory(
+        memory_key = "chat_history",
+        return_messages = True
+    )
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm = llm,
+        retriever = vector_store.as_retriever(),
+        memory = memory
+    )
+
+    return conversation_chain
+
+
+if "conversation" not in st.session_state:
+    st.session_state.conversation = None
 
 def main():
     load_dotenv() # Auto loading the Keys from .env file
@@ -50,10 +72,26 @@ def main():
         initial_sidebar_state = "expanded"
     )
 
+    # Apply css styling to the web app
+    st.write(
+        css,
+        unsafe_allow_html = True
+    )
+
     st.title(
         body = "📚 Talk With Doc"
     )
     st.text_input("Let's start asking questions...")
+
+    st.write(
+        user_template.replace("{{MSG}}", "Hello AI"),
+        unsafe_allow_html = True
+    )
+
+    st.write(
+        bot_template.replace("{{MSG}}", "Hello Human"),
+        unsafe_allow_html = True
+    )
 
     with st.sidebar:
         st.header("Your docs")
@@ -74,7 +112,8 @@ def main():
                     text_chunks = text_chunks,
                     service = "instructor_embedding"
                 )
-                st.write(vector_store)
+                # create conversation chain
+                st.session_state.conversation = get_conversation_chain(vector_store)
 
 if __name__ == "__main__":
     main()
