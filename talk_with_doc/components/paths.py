@@ -1,0 +1,1 @@
+model_path = "../mistral-7b-openorca.Q4_0.gguf"
