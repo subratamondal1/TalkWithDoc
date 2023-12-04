@@ -551,6 +551,25 @@ gitdb = ">=4.0.1,<5"
 test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mock", "mypy", "pre-commit", "pytest", "pytest-cov", "pytest-instafail", "pytest-subtests", "pytest-sugar"]
 
 [[package]]
+name = "gpt4all"
+version = "2.0.2"
+description = "Python bindings for GPT4All"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "gpt4all-2.0.2-py3-none-macosx_10_15_universal2.whl", hash = "sha256:f18f348d21e2ce8e45dbf8334960670660b53f69a8e47a26bb7e64924e6ed130"},
+    {file = "gpt4all-2.0.2-py3-none-manylinux1_x86_64.whl", hash = "sha256:e4c19df94f45829565563017577b299c012ebed18ebea1d6df0273ef89c92a01"},
+    {file = "gpt4all-2.0.2-py3-none-win_amd64.whl", hash = "sha256:c09440bfb3463b9e278875fc726cf1f75d2a2b19bb73d97dde5e57b0b1f6e059"},
+]
+
+[package.dependencies]
+requests = "*"
+tqdm = "*"
+
+[package.extras]
+dev = ["black", "isort", "mkautodoc", "mkdocs-jupyter", "mkdocs-material", "mkdocstrings[python]", "pytest", "setuptools", "twine", "wheel"]
+
+[[package]]
 name = "greenlet"
 version = "3.0.1"
 description = "Lightweight in-process concurrent programming"
@@ -1779,6 +1798,56 @@ files = [
 [package.extras]
 plugins = ["importlib-metadata"]
 windows-terminal = ["colorama (>=0.4.6)"]
+
+[[package]]
+name = "pyllamacpp"
+version = "2.4.2"
+description = "Python bindings for llama.cpp"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pyllamacpp-2.4.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:5a65f475fe6e7692ee11d033ba42216e43bd201bdfe0b65e5a9057dddb476982"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:91e48102530477a6a1b8d83fa83d4de7c7cd3307f14e2baf198f07138ced21a0"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:1319f81a1295bf491e0abb356980c57f2793ad5411b148c4b74f39495ceffca2"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:50eff23d8e6493ba830e04752a660c1390587114f1136465ea0d03e22c5d6c1a"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:6211b40ad6a733da5d608676cb76fe5224e2806800fbac1ac90ef6808ecff9ae"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:220ea8b9ee06a7d6f5e507cb79103b9e05b755cb43253c782a647be52385fd31"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-win32.whl", hash = "sha256:e4719c8b8686e0b8780a1fac0bf4ce72366b4dd6875e6c7ff2d249c2855511f7"},
+    {file = "pyllamacpp-2.4.2-cp310-cp310-win_amd64.whl", hash = "sha256:c3ca6d25a00b397cbc6c7f0a6617ab70e50f80f09a8c38cd8427e9e1970538ab"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:c00de82d141e1973c205fc57e4b091b0932d473fa73981072be68f885bf55946"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:9493123010bf5048280c5a10587b92bcae6c5a422b5a52e47af3a3a718b9fd48"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:abeeed67854d1a0a69763b4bbe38ec04a835f4e37c6246102939ef92903219ad"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cca3219dd56637dbf235e167b8b021cb7338ffc64dc8172abdf5f5e54f379e70"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-musllinux_1_1_i686.whl", hash = "sha256:3d47062ba89f6be60da9ebf7b520079a1d6e1a5b60a46c27bd5b9ae65004e7fd"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:7e265163d0fefa1672d55ee1f7f9708d1863d45fcb82680a9caa0f36a15280b8"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-win32.whl", hash = "sha256:3c4f770666e16ae79c331c8790ce9b766d4a868df82871d0a70367a991306f27"},
+    {file = "pyllamacpp-2.4.2-cp311-cp311-win_amd64.whl", hash = "sha256:377ba44b2f77cfb0a11343e75a645513547c97589ecdb987d084168dfde91ee2"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:620eabae1d8bf905b1d3f8393fc5fcc6fff1df2193da4e812f52d05b1f99f405"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:c1a6838e06ee7ce46fa4ec2c73970d612ba735ae65a6f1a8412c7f7d6c4f9b57"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:6a4df24ecb4060a0b22080470dff014e31f858dcc7108f7fa18b75e280aea843"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:15639b10f113398aefdaa3ab260165771f22a685b9354d6caf3eaebbab9569a0"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:95a41ab27aa7a8535209454d2794984c50e6425d52c0526c79107aefb2ec1d6e"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:71570d671e61ee821dec0af188537684d1f7756f98dbd3ebe9aa5c492688f735"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-win32.whl", hash = "sha256:aa4dde7fecaf2b56d1231f4ed76837e52e35aefc09aa427af11a67eae7e92879"},
+    {file = "pyllamacpp-2.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:6595e0686cabdd6e81a88461e83bc7d5cc4aa191ad28c1643fc2ada02fda98a4"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:7ab2460c6f5572f102e871ea6d118bc34dc8a919aa3bbac1b89a25eb18cebed0"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:3472b57b4783cc1028fc467a0d1e271cfeee404a49ec3f8286a368ba8158f9c2"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:b7d6e2887f232de6001c208b4f05dd55dddfd7f3c68c000b39adf4622c077317"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:899df621281b372fb83e866cf24310fec1307afecfa43cdc46eaa67e4bd71145"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:0be6809f3afb5d6b91bba67e96a730fbfed5ce9c59978ec949a4379fa8d35a95"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:dc15577f56857895c4b98d7105c20a62340b483dcc32e5b06fb2d83794101313"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-win32.whl", hash = "sha256:1f3e96c674d72b01e879f0d9d3e61e4cb374ce876dea061bd3f555bd3d19b3b8"},
+    {file = "pyllamacpp-2.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:5fd358791b675f97f403da247a5835d14f919c78d0468b4cf51a36dc9c3dfc38"},
+    {file = "pyllamacpp-2.4.2-pp38-pypy38_pp73-macosx_10_9_x86_64.whl", hash = "sha256:593ff093ec3c9e1e5db61fc2684a3fbbf149eb0dbcf50d680bcef32f5de9b02c"},
+    {file = "pyllamacpp-2.4.2-pp38-pypy38_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:bf021bdc00073167842544f332dda9b2e7006b7cd19a64156da8f5b830bd2b82"},
+    {file = "pyllamacpp-2.4.2-pp38-pypy38_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6a2b7dee60273cf96a39edd3973d0dfcb6baf728a2aa427200f3855d6be7ba85"},
+    {file = "pyllamacpp-2.4.2-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:8ca5fdf35c7c67c8e842f7d989769b7238b03d24ad43810a2e23d69f0b0e117b"},
+    {file = "pyllamacpp-2.4.2-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:9185e5fd104255a04401b9600180f7306512abed9d0b8776d332fa4d5ea1ef95"},
+    {file = "pyllamacpp-2.4.2-pp39-pypy39_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:5978eb58fcae8f6783ba8e362e92685d665e485cd30e24116d59c9cd882091e0"},
+    {file = "pyllamacpp-2.4.2-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cc61dfb55aac5b935f42037fc9e5346bcc2e77012d81b4e3c262986bc810e9f2"},
+    {file = "pyllamacpp-2.4.2-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:d1ae6c40a13cbe73274ee6aa977368419b2120e63465d322e8e057a29739e7e2"},
+    {file = "pyllamacpp-2.4.2.tar.gz", hash = "sha256:b3432b9aa9285959799e9287606de6d73f28c3756620f0dcff3d925bfb25b9c9"},
+]
 
 [[package]]
 name = "pypdf2"
@@ -3250,4 +3319,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "4e347de3b6c7787e8e0792f0a3c5d89aeecde351680e21d7848b292ae79dd4fa"
+content-hash = "14218e6ed1b2db306c8cf3abfb4376058d81e7e129b1c5491b6a601cee7a8cab"
