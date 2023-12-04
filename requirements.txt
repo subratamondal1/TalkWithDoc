@@ -1,0 +1,4 @@
+streamlit
+langchain
+gpt4all
+openai
