@@ -1,4 +1,2 @@
-# Embeddings
-For Embeddings we will use two algorithms:
-1. OpenAI's Ada2 Embedding
-2. Instructor Embedding
+# LLM MODEL USED
+Used [**Mistral 7B LLM Model**](https://mistral.ai/news/announcing-mistral-7b/) with GPT4All, used the same model for Embeddings too.
