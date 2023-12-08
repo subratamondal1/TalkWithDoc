@@ -4,6 +4,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.llms.gpt4all import GPT4All
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
+from langchain.llms.google_palm import GooglePalm
 
 
 @st.cache_data
@@ -12,12 +13,8 @@ def get_conversation_chain(vector_store, model = "other"):
         # use openai model
         llm = ChatOpenAI()
     else:
-        # use huggingface model
-        llm = GPT4All(
-            model_path = model_path,
-            model_type = "GGUF",
-            n_threads = 4
-        )
+        # use googel palm model
+        llm = GooglePalm()
 
     memory = ConversationBufferMemory(
         memory_key = "chat_history",

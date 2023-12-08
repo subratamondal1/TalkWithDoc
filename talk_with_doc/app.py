@@ -24,7 +24,7 @@ def  handle_user_input(user_question):
             )
 
 def main():
-    load_dotenv() # Auto loading the Keys from .env file
+    load_dotenv() # Load the environment variables from .env file
     st.set_page_config(
         page_title = "Talk With Docs",
         page_icon = "📚",
@@ -55,7 +55,7 @@ def main():
     )
 
     if not st.session_state.openai_api_key:
-        st.warning("OpenAI API Key not detected ⚠️")
+        st.warning("Google PALM API Key not detected ⚠️")
     if not st.session_state.docs:
         st.warning("Docs not detected ⚠️")
     

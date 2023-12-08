@@ -18,7 +18,7 @@ def my_sidebar():
 
         st.session_state.openai_api_key = st.text_input(
             label = "`Required`",
-            placeholder = "Your OpenAI API KEY"
+            placeholder = "Google PALM API Key"
         )
 
         if st.session_state.openai_api_key and st.session_state.docs:
@@ -26,7 +26,7 @@ def my_sidebar():
             if button:
                 with st.spinner("Processing..."): # Spinning progress bar
                     # extract raw texts from the documents
-                    raw_text = extract_raw_text(docs)
+                    raw_text = extract_raw_text(st.session_state.docs)
                     # extract text chunks from raw text (Embeddings)
                     text_chunks = extract_text_chunks(raw_text)
                     # create Vector Store with the Embeddings of text_chunks
