@@ -4,7 +4,7 @@ from langchain.embeddings.google_palm import GooglePalmEmbeddings
 from langchain.embeddings import OpenAIEmbeddings
 from components.paths import model_path
 
-@st.cache_data
+# @st.cache_resource
 def get_vectorstore(text_chunks, service = "other"):
     if service == "openai":
         embedding = OpenAIEmbeddings()
