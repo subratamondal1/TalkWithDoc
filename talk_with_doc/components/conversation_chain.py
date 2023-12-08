@@ -7,7 +7,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.llms.google_palm import GooglePalm
 
 
-@st.cache_data
+# @st.cache_data
 def get_conversation_chain(vector_store, model = "other"):
     if model == "openai":
         # use openai model
