@@ -5,3 +5,4 @@ pypdf2
 faiss-cpu
 openai
 watchdog
+google-generativeai
